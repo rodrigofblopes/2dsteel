@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2D Steel | Casas Financiadas em Light Steel Frame</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cor-primaria: #1a3a52;
+            --cor-secundaria: #2d5a7b;
+            --cor-destaque: #c9a227;
+            --cor-clara: #f5f3ee;
+            --cor-texto: #2c2c2c;
+            --sombra: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            color: var(--cor-texto);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--cor-primaria) 0%, var(--cor-secundaria) 100%);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--sombra);
+        }
+
+        .header-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .logo {
+            height: 56px;
+            width: auto;
+            object-fit: contain;
+            filter: brightness(1.05);
+        }
+
+        nav {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        nav a {
+            color: var(--cor-clara);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: var(--cor-destaque);
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 85vh;
+            background: linear-gradient(160deg, var(--cor-clara) 0%, #e8e4dc 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 3rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%231a3a52' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+
+        .hero-content {
+            max-width: 700px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: clamp(1.8rem, 4vw, 2.6rem);
+            font-weight: 700;
+            color: var(--cor-primaria);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero .destaque {
+            color: var(--cor-destaque);
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            color: var(--cor-secundaria);
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.9rem 2rem;
+            background: linear-gradient(135deg, var(--cor-destaque), #b8921f);
+            color: var(--cor-primaria);
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 8px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(201, 162, 39, 0.35);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--cor-primaria);
+            border: 2px solid var(--cor-primaria);
+            margin-left: 0.75rem;
+        }
+
+        .btn-outline:hover {
+            background: var(--cor-primaria);
+            color: var(--cor-clara);
+            box-shadow: 0 8px 25px rgba(26, 58, 82, 0.25);
+        }
+
+        @media (max-width: 480px) {
+            .hero .btn-outline { margin-left: 0; margin-top: 0.75rem; }
+        }
+
+        /* Seção Light Steel Frame */
+        .metodo {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .metodo h2 {
+            font-size: 2rem;
+            color: var(--cor-primaria);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .metodo > p {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 3rem;
+            color: var(--cor-secundaria);
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: var(--sombra);
+            border-top: 4px solid var(--cor-destaque);
+            transition: transform 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+        }
+
+        .card h3 {
+            color: var(--cor-primaria);
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .card p {
+            color: var(--cor-texto);
+            font-size: 0.95rem;
+        }
+
+        /* Financiamento */
+        .financiamento {
+            background: linear-gradient(135deg, var(--cor-primaria), var(--cor-secundaria));
+            color: var(--cor-clara);
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .financiamento h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .financiamento p {
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            opacity: 0.95;
+        }
+
+        .financiamento .btn {
+            background: var(--cor-destaque);
+            color: var(--cor-primaria);
+        }
+
+        .financiamento .btn-outline {
+            border-color: var(--cor-clara);
+            color: var(--cor-clara);
+        }
+
+        .financiamento .btn-outline:hover {
+            background: var(--cor-clara);
+            color: var(--cor-primaria);
+        }
+
+        /* Footer */
+        footer {
+            background: #1a2f3d;
+            color: var(--cor-clara);
+            padding: 2rem;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: var(--cor-destaque);
+            text-decoration: none;
+        }
+
+        @media (max-width: 600px) {
+            nav {
+                width: 100%;
+                justify-content: center;
+            }
+            .logo {
+                height: 44px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-inner">
+            <img src="2dsteel.jpg" alt="2D Steel - Construção em Light Steel Frame" class="logo">
+            <nav>
+                <a href="#inicio">Início</a>
+                <a href="#metodo">Light Steel Frame</a>
+                <a href="#financiamento">Financiamento</a>
+                <a href="https://cliente.mcf.house/nova-os/5388/15" target="_blank" rel="noopener">Simulação</a>
+                <a href="#contato">Contato</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero" id="inicio">
+            <div class="hero-content">
+                <h1>Casas financiadas com <span class="destaque">Light Steel Frame</span></h1>
+                <p>Construção rápida, sustentável e com ótimo custo-benefício. Realize o sonho da casa própria com a tecnologia que combina qualidade e economia.</p>
+                <a href="#contato" class="btn">Solicitar orçamento</a>
+                <a href="https://cliente.mcf.house/nova-os/5388/15" target="_blank" rel="noopener" class="btn btn-outline">Simular financiamento</a>
+            </div>
+        </section>
+
+        <section class="metodo" id="metodo">
+            <h2>Por que Light Steel Frame?</h2>
+            <p>O método construtivo em estrutura de aço leve garante obras mais rápidas, menos desperdício e maior conforto térmico e acústico.</p>
+            <div class="cards">
+                <div class="card">
+                    <h3>Rapidez</h3>
+                    <p>Obra até 60% mais rápida que a alvenaria tradicional, com prazo previsível e menos atrasos.</p>
+                </div>
+                <div class="card">
+                    <h3>Sustentabilidade</h3>
+                    <p>Menor geração de entulho, uso racional de materiais e possibilidade de reciclagem do aço.</p>
+                </div>
+                <div class="card">
+                    <h3>Conforto</h3>
+                    <p>Excelente isolamento térmico e acústico, proporcionando economia de energia e bem-estar.</p>
+                </div>
+                <div class="card">
+                    <h3>Financiamento</h3>
+                    <p>Projetos adequados aos principais programas de financiamento habitacional.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="financiamento" id="financiamento">
+            <h2>Financiamento facilitado</h2>
+            <p>Trabalhamos com as melhores condições para você construir ou adquirir sua casa. Parcelas que cabem no seu bolso e realizam seu sonho.</p>
+            <a href="https://cliente.mcf.house/nova-os/5388/15" target="_blank" rel="noopener" class="btn">Fazer simulação imobiliária</a>
+            <a href="#contato" class="btn btn-outline">Falar com um consultor</a>
+        </section>
+    </main>
+
+    <footer id="contato">
+        <p><strong>2D Steel</strong> — Construção em Light Steel Frame</p>
+        <p>Entre em contato: <a href="mailto:doisdsteel@gmail.com">doisdsteel@gmail.com</a> | <a href="tel:+5511999999999">(11) 99999-9999</a></p>
+    </footer>
+</body>
+</html>
