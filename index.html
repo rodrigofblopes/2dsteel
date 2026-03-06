@@ -258,6 +258,44 @@
             text-decoration: none;
         }
 
+                /* Galeria no topo da página inicial */
+        .galeria-inicio {
+            width: 100%;
+            padding: 0;
+            background: var(--cor-clara);
+        }
+
+        .galeria-inicio .galeria {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0.25rem;
+            max-width: 100%;
+            margin: 0;
+        }
+
+        .galeria-inicio .galeria img {
+            width: 100%;
+            height: 100%;
+            min-height: 140px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.2s;
+        }
+
+        .galeria-inicio .galeria img:hover {
+            transform: scale(1.02);
+        }
+
+        @media (max-width: 768px) {
+            .galeria-inicio .galeria {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.2rem;
+            }
+            .galeria-inicio .galeria img {
+                min-height: 120px;
+            }
+        }
+
         @media (max-width: 600px) {
             nav {
                 width: 100%;
@@ -284,6 +322,19 @@
     </header>
 
     <main>
+        <section class="galeria-inicio">
+            <div class="galeria">
+                <img src="IMAGENS - 86,32 M²/IMG_01.jpg" alt="Casa 86,32 m² - Vista 1">
+                <img src="IMAGENS - 86,32 M²/IMG_02.jpg" alt="Casa 86,32 m² - Vista 2">
+                <img src="IMAGENS - 86,32 M²/IMG_03.jpg" alt="Casa 86,32 m² - Vista 3">
+                <img src="IMAGENS - 86,32 M²/IMG_04.jpg" alt="Casa 86,32 m² - Vista 4">
+                <img src="IMAGENS - 86,32 M²/IMG_05.jpg" alt="Casa 86,32 m² - Vista 5">
+                <img src="IMAGENS - 86,32 M²/IMG_06.jpg" alt="Casa 86,32 m² - Vista 6">
+                <img src="IMAGENS - 86,32 M²/IMG_07.jpg" alt="Casa 86,32 m² - Vista 7">
+                <img src="IMAGENS - 86,32 M²/IMG_08.jpg" alt="Casa 86,32 m² - Vista 8">
+            </div>
+        </section>
+
         <section class="hero" id="inicio">
             <div class="hero-content">
                 <h1>Casas financiadas com <span class="destaque">Light Steel Frame</span></h1>
